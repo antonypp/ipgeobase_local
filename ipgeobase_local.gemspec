@@ -4,8 +4,8 @@ require File.expand_path('../lib/ipgeobase_local/version', __FILE__)
 Gem::Specification.new do |gem|
   gem.authors       = ["Anton Taraev"]
   gem.email         = ["anti191@gmail.com"]
-  gem.description   = %q{TODO: Write a gem description}
-  gem.summary       = %q{TODO: Write a gem summary}
+  gem.description   = %q{geo ip}
+  gem.summary       = %q{geo ip}
   gem.homepage      = ""
 
   gem.files         = `git ls-files`.split($\)

@@ -10,8 +10,12 @@ module IpgeobaseLocal
       instance.find(ip)
     end
 
+    def self.load
+      instance
+    end
+
     def initialize()
-      load_base
+      load_base unless defined?(Rake)
     end
 
     def find(ip)
@@ -43,13 +47,16 @@ module IpgeobaseLocal
     private
 
     def load_base
-      cidr_file = './geofile/cidr_optim.txt'
-      cities_file = './geofile/cities.txt'
       city_base = {}
       @cidr_base = []
+
+      cidr_file = "#{IpgeobaseLocal.base_directory}cidr_optim.txt"
+      cities_file = "#{IpgeobaseLocal.base_directory}cities.txt"
+
       CSV.foreach(cities_file, col_sep: "\t", quote_char:"'", encoding: "windows-1251:utf-8") do |line|
         city_base[line[0]] = line[1..5]
       end
+
       CSV.foreach(cidr_file, col_sep: "\t", quote_char:"'") do |line|
         region = ''
         city = ''
@@ -63,6 +70,7 @@ module IpgeobaseLocal
         end
         @cidr_base << {start: line[0].to_i, end: line[1].to_i, meta_data: IpMetaData.new(country, region, city)}
       end
+
     end
 
     def convert_ip(ip)
