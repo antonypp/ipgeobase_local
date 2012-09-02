@@ -18,7 +18,9 @@ Or install it yourself as:
 
 ## Usage
 
-    ip_meta = Ipgeobase.lookup('10.11.12.134')
+    rake load_ipgeobase# => загрузка базы
+
+    ip_meta = IpgeobaseLocal.lookup('10.11.12.134')
 
     ip_meta.city # => Москва
 

@@ -15,5 +15,4 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
   gem.version       = IpgeobaseLocal::VERSION
 
-  gem.add_runtime_dependency "ZenTest"
 end
