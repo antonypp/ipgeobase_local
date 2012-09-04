@@ -18,14 +18,21 @@ Or install it yourself as:
 
 ## Usage
 
-    rake load_ipgeobase# => загрузка базы
+    rake ipgeobase_local:update# => загрузка базы c ipgeobase.ru
+
+    IpgeobaseLocal.load#предварительная загрузка базы в пямять
 
     ip_meta = IpgeobaseLocal.lookup('10.11.12.134')
 
     ip_meta.city # => Москва
 
     ip_meta.country # => Россия
+## Usage with Rails
 
+config/initializers/ipgeo.rb
+
+    IpgeobaseLocal.base_directory = "db/geo_files/"
+    IpgeobaseLocal.load
 ## Contributing
 
 1. Fork it
