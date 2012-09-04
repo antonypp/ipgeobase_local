@@ -52,7 +52,9 @@ module IpgeobaseLocal
 
       cidr_file = "#{IpgeobaseLocal.base_directory}cidr_optim.txt"
       cities_file = "#{IpgeobaseLocal.base_directory}cities.txt"
-
+      unless File.exists?(cidr_file) && File.exists?(cities_file)
+        raise "Not exist ipgeobase files, pls run 'rake ipgeobase_local:update'"
+      end
       CSV.foreach(cities_file, col_sep: "\t", quote_char:"'", encoding: "windows-1251:utf-8") do |line|
         city_base[line[0]] = line[1..5]
       end
